@@ -1,0 +1,135 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: logs
+#------------------------------------------------------------
+
+CREATE TABLE logs(
+        date_heure Time NOT NULL ,
+        chemin     Varchar NOT NULL ,
+        taille     Integer NOT NULL
+	,CONSTRAINT logs_PK PRIMARY KEY (date_heure)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: TemplateModele
+#------------------------------------------------------------
+
+CREATE TABLE TemplateModele(
+        idTemplate     Integer NOT NULL ,
+        nomTemplate    Varchar NOT NULL ,
+        cheminTemplate Varchar NOT NULL ,
+        description    Varchar NOT NULL
+	,CONSTRAINT TemplateModele_PK PRIMARY KEY (idTemplate)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Script
+#------------------------------------------------------------
+
+CREATE TABLE Script(
+        idScript     Integer NOT NULL ,
+        nomScript    Varchar NOT NULL ,
+        cheminScript Varchar NOT NULL ,
+        idTemplate   Integer NOT NULL
+	,CONSTRAINT Script_PK PRIMARY KEY (idScript)
+
+	,CONSTRAINT Script_TemplateModele_FK FOREIGN KEY (idTemplate) REFERENCES TemplateModele(idTemplate)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Conteneur
+#------------------------------------------------------------
+
+CREATE TABLE Conteneur(
+        idConteneur  Integer NOT NULL ,
+        NomConteneur Varchar NOT NULL ,
+        mdpConteneur Varchar NOT NULL ,
+        up           Bool NOT NULL ,
+        date_heure   Time NOT NULL ,
+        idScript     Integer NOT NULL
+	,CONSTRAINT Conteneur_PK PRIMARY KEY (idConteneur)
+
+	,CONSTRAINT Conteneur_logs_FK FOREIGN KEY (date_heure) REFERENCES logs(date_heure)
+	,CONSTRAINT Conteneur_Script0_FK FOREIGN KEY (idScript) REFERENCES Script(idScript)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Utilisateur
+#------------------------------------------------------------
+
+CREATE TABLE Utilisateur(
+        email       Varchar NOT NULL ,
+        pseudo      Varchar NOT NULL ,
+        password    Varchar NOT NULL ,
+        idConteneur Integer NOT NULL
+	,CONSTRAINT Utilisateur_PK PRIMARY KEY (email)
+
+	,CONSTRAINT Utilisateur_Conteneur_FK FOREIGN KEY (idConteneur) REFERENCES Conteneur(idConteneur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Role
+#------------------------------------------------------------
+
+CREATE TABLE Role(
+        idRole Integer NOT NULL ,
+        Role   Varchar NOT NULL ,
+        email  Varchar NOT NULL
+	,CONSTRAINT Role_PK PRIMARY KEY (idRole)
+
+	,CONSTRAINT Role_Utilisateur_FK FOREIGN KEY (email) REFERENCES Utilisateur(email)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: TemplateCree
+#------------------------------------------------------------
+
+CREATE TABLE TemplateCree(
+        IDTemplateCree Varchar NOT NULL ,
+        nom            Varchar NOT NULL ,
+        chemin         Varchar NOT NULL ,
+        idScript       Integer NOT NULL
+	,CONSTRAINT TemplateCree_PK PRIMARY KEY (IDTemplateCree)
+
+	,CONSTRAINT TemplateCree_Script_FK FOREIGN KEY (idScript) REFERENCES Script(idScript)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: TypeScript
+#------------------------------------------------------------
+
+CREATE TABLE TypeScript(
+        idScript         Integer NOT NULL ,
+        action           Varchar NOT NULL ,
+        idScript_Generer Integer NOT NULL
+	,CONSTRAINT TypeScript_PK PRIMARY KEY (idScript)
+
+	,CONSTRAINT TypeScript_Script_FK FOREIGN KEY (idScript_Generer) REFERENCES Script(idScript)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Argument
+#------------------------------------------------------------
+
+CREATE TABLE Argument(
+        idArgs   Integer NOT NULL ,
+        valeur   Varchar NOT NULL ,
+        cle      Varchar NOT NULL ,
+        idScript Integer NOT NULL
+	,CONSTRAINT Argument_PK PRIMARY KEY (idArgs)
+
+	,CONSTRAINT Argument_Script_FK FOREIGN KEY (idScript) REFERENCES Script(idScript)
+)ENGINE=InnoDB;
+

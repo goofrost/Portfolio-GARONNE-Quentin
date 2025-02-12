@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1>Profil de {{ profile.prenom }} {{ profile.nom }}</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Nom : </strong>{{ profile.nom }}</li>
+            <li class="list-group-item"><strong>Prénom : </strong>{{ profile.prenom }}</li>
+            <li class="list-group-item"><strong>Adresse : </strong>{{ profile.adresse }}</li>
+            <li class="list-group-item"><strong>Email : </strong>{{ profile.email }}</li>
+        </ul>
+    </div>
+{% endblock %}

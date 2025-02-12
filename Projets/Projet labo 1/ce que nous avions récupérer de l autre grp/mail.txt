@@ -1,0 +1,9 @@
+Bonjour,
+
+Je vous envoie ce mail pour vous transmettre vos nouvelles tâches. Je vous donne en jointure les documents qui nous ont 
+
+été envoyés.
+
+Durant les précédentes séances, nous n’avons fait qu’installer Debian sur une machine.
+
+Maquette sur Figma : https://www.figma.com/file/ac4Q5P6YFOYMQvFY3QJHsM/Projet-labo?type=design&node-id=5-243&mode=design&t=nut8RTWtZQcVW36I-0

@@ -50,8 +50,8 @@ Bienvenue sur mon portfolio ! Je suis un développeur Full Stack passionné, sp�
 ## 📬 Contact  
 
 📧 **Email :** quentin.garonne@edu.igensia.com
-🔗 **GitHub :** [github.com/quentin-garonne](https://github.com/quentin-garonne)  
-💼 **LinkedIn :** [linkedin.com/in/quentin-garonne](https://linkedin.com/in/quentin-garonne)  
+🔗 **GitHub :** [[github.com/quentin-garonne]](https://github.com/goofrost/Portfolio-GARONNE-Quentin)
+💼 **LinkedIn :** [[linkedin.com/in/quentin-garonne]](www.linkedin.com/in/quentin-garonne)
 
 ---
 
